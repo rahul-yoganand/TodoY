@@ -3,6 +3,7 @@ package com.example.todoy
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 class RecyclerAdapter(var data: List<Task>):RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
@@ -12,13 +13,20 @@ class RecyclerAdapter(var data: List<Task>):RecyclerView.Adapter<RecyclerAdapter
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-       if(data!=null) {holder.tvRecy.text= data[position].toString()}
+        holder.tvtask.text= data[position].toString()
+        holder.cbDel.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+               var delTask=DeleteLastTask(maintaskDao,data[position])
+                delTask.execute()
+            }
+        }
     }
 
     override fun getItemCount(): Int {
         return data.size
     }
     class ViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
-        var tvRecy: TextView = itemView.findViewById(R.id.card)
+        var tvtask: TextView = itemView.findViewById(R.id.card)
+        var cbDel:CheckBox=itemView.findViewById(R.id.del_task)
     }
 }

@@ -11,25 +11,26 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 lateinit var recyclerView:RecyclerView
 lateinit var fab: FloatingActionButton
 private var layoutManager :RecyclerView.LayoutManager?=null
+lateinit var maintaskDao: TaskDao
+lateinit var mainroomDb: TaskRoomDb
 
 //lateinit var fab1: ExtendedFloatingActionButton
 //lateinit var fab2: ExtendedFloatingActionButton
 //var isFABOpen = false
 class MainActivity : AppCompatActivity() {
-    var data= listOf<Task>()
-    lateinit var mtaskDao: TaskDao
-    lateinit var roomDb: TaskRoomDb
+    var edata= listOf<Task>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         fab = findViewById(R.id.fab)
         recyclerView=findViewById(R.id.recycler)
-        roomDb=TaskRoomDb.getDatabase(this)
-        mtaskDao=roomDb.taskDao()
+        mainroomDb=TaskRoomDb.getDatabase(this)
+        maintaskDao=mainroomDb.taskDao()
         layoutManager= LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-        val adapter = RecyclerAdapter(data)
+        val adapter = RecyclerAdapter(edata)
         recyclerView.adapter = adapter
+
 
 
 
@@ -40,7 +41,7 @@ class MainActivity : AppCompatActivity() {
     }
      override fun onStart() {
          super.onStart()
-        var listData =FetchData(this,mtaskDao, recyclerView)
+        var listData =FetchData(this,maintaskDao, recyclerView)
         listData.execute()
     }
     fun fabOnClick(view: View) {
@@ -52,6 +53,9 @@ class MainActivity : AppCompatActivity() {
 //            closeFABMenu()
 //        }
     }
+
+
+
 
 
 }

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="#3C3B3B">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
@@ -15,7 +16,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="30dp"
-        android:layout_marginBottom="100dp"/>
+        android:layout_marginBottom="10dp"
+        android:background="#3C3B3B"/>
 
 <!--    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton-->
 <!--        android:id="@+id/fab2"-->
@@ -42,7 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:src="@drawable/ic_launcher_foreground"
-        android:backgroundTint="#03A9F4"
+        android:backgroundTint="#F44336"
         android:contentDescription="Add Task"
         android:layout_margin="30dp"
         app:layout_constraintBottom_toBottomOf="parent"

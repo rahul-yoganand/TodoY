@@ -1,6 +1,6 @@
 package com.example.todoy;
-import com.example.todoy.Task;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
@@ -11,6 +11,8 @@ import java.util.List;
 public interface TaskDao {
     @Insert
     void insert(Task task);
+    @Delete
+    void delete(Task task);
 
     @Update
     public void updateWords(Task... tasks);
@@ -26,5 +28,4 @@ public interface TaskDao {
 
     @Query("DELETE FROM Task WHERE uid=(SELECT MAX(uid) FROM Task)")
     void deleteLast();
-
 }
