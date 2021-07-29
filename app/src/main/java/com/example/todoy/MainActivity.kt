@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
     }
      override fun onStart() {
          super.onStart()
-        var listData =FetchData(this,maintaskDao, recyclerView)
+        var listData =FetchData(maintaskDao, recyclerView)
         listData.execute()
     }
     fun fabOnClick(view: View) {

@@ -16,8 +16,7 @@ public class FetchData extends AsyncTask<Void, Void, List<Task>> {
     Context mContext;
     RecyclerView mrecyclerView;
 
-    public FetchData(Context context, TaskDao taskDao, RecyclerView mrecyclerView) {
-        mContext = context;
+    public FetchData( TaskDao taskDao, RecyclerView mrecyclerView) {
         this.mListView = mListView;
         this.mTaskDao = taskDao;
         this.mrecyclerView = mrecyclerView;

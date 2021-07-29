@@ -5,8 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-class RecyclerAdapter(var data: List<Task>):RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
+import java.lang.Thread.sleep
+
+class   RecyclerAdapter(var data: List<Task>):RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v= LayoutInflater.from(parent.context).inflate(R.layout.singlecard,parent,false)
         return ViewHolder(v)
@@ -18,6 +21,8 @@ class RecyclerAdapter(var data: List<Task>):RecyclerView.Adapter<RecyclerAdapter
             if (isChecked) {
                var delTask=DeleteLastTask(maintaskDao,data[position])
                 delTask.execute()
+                var listData =FetchData(maintaskDao, recyclerView)
+                listData.execute()
             }
         }
     }
